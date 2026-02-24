@@ -5,7 +5,7 @@ tag: 'Kjaramál'
 excerpt: 'FAST hefur ekki enn gildandi kjarasamning við Háskólann í Reykjavík. Stjórn félagsins vinnur að gerð kjarasamnings í samstarfi við BHM.'
 ---
 
-FAST hefur ekki enn gildandi kjarasamning við Háskólann í Reykjavík (HR). Félagið er nýstofnað og eitt af fyrstu og mikilvægustu verkefnum stjórnar er að tryggja félagsmönnum kjarasamning.
+FAST hefur ekki enn gildandi kjarasamning við Háskólann í Reykjavík (HR). Stjórn félagsins vinnur nú að því verkefni að tryggja félagsmönnum kjarasamning.
 
 ## Staðan núna
 
