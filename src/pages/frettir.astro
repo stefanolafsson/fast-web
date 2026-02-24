@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const news = [
+  {
+    title: 'Aðalfundur FAST 2026',
+    date: '24. febrúar 2026',
+    tag: 'Tilkynning',
+    excerpt: 'Aðalfundur FAST verður haldinn á vorönn 2026. Á fundinum verður stjórn kosin, reikningar lagðir fram og mál félagsins rædd. Nánari upplýsingar um tíma og stað verða birtar hér á vefnum.',
+  },
+  {
+    title: 'Kjarasamningar — staðan',
+    date: '24. febrúar 2026',
+    tag: 'Kjaramál',
+    excerpt: 'Upplýsingar um stöðu kjarasamninga og næstu skref í kjaraviðræðum. Félagsmenn eru hvattir til að kynna sér gildandi kjarasamninga á vef BHM.',
+  },
+  {
+    title: 'Vefur FAST tekinn í notkun',
+    date: '24. febrúar 2026',
+    tag: 'Tilkynning',
+    excerpt: 'Nýr vefur FAST er kominn í loftið. Á vefnum er að finna upplýsingar um félagið, stjórn þess, kjaramál og fréttir. Vefurinn verður uppfærður reglulega.',
+  },
+];
+---
+
+<Layout title="Fréttir" description="Fréttir og tilkynningar frá FAST.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Fréttir</h1>
+      <p>Nýjustu fréttir og tilkynningar frá Félagi akademískra starfsmanna.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="news-list">
+        {news.map((item) => (
+          <article class="news-item">
+            <div class="news-meta">
+              <span class="tag">{item.tag}</span>
+              <time>{item.date}</time>
+            </div>
+            <h2>{item.title}</h2>
+            <p>{item.excerpt}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .news-item {
+    padding: var(--space-8);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+  }
+
+  .news-item:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .news-meta time {
+    color: var(--color-text-light);
+    font-size: var(--size-sm);
+  }
+
+  .news-item h2 {
+    font-size: var(--size-xl);
+    margin-bottom: var(--space-3);
+  }
+
+  .news-item p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    max-width: 75ch;
+  }
+</style>

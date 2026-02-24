@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Um félagið" description="Upplýsingar um FAST — Félag akademískra starfsmanna við Háskólann í Reykjavík.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Um félagið</h1>
+      <p>FAST er stéttarfélag akademískra starfsmanna við Háskólann í Reykjavík og aðildarfélag BHM.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="content-grid">
+        <div class="prose">
+          <h2>Hvað er FAST?</h2>
+          <p>
+            FAST — Félag akademískra starfsmanna við HR — er stéttarfélag sem gætir
+            hagsmuna akademískra starfsmanna við Háskólann í Reykjavík. Félagið annast
+            hagsmunagæslu, kjarasamningsgerð og vinnur að bættum starfsskilyrðum
+            félagsmanna sinna.
+          </p>
+          <p>
+            Félagsmenn FAST eru kennarar, prófessorar, dósentar, lektorar, aðjúnktar,
+            vísindamenn og annað akademískt starfsfólk við HR.
+          </p>
+
+          <h2>Hlutverk og markmið</h2>
+          <p>Meginmarkmið FAST eru:</p>
+          <ul>
+            <li>Að gæta hagsmuna félagsmanna í kjaramálum og tryggja sanngjarnt endurgjald.</li>
+            <li>Að stuðla að bættu starfsumhverfi og vinnuaðstæðum við HR.</li>
+            <li>Að standa vörð um akademískt frelsi og starfsöryggi.</li>
+            <li>Að efla samstöðu meðal akademískra starfsmanna.</li>
+            <li>Að vera tengiliður milli félagsmanna og yfirstjórnar háskólans.</li>
+          </ul>
+
+          <h2>Aðild að BHM</h2>
+          <p>
+            FAST er aðildarfélag <a href="https://www.bhm.is" target="_blank" rel="noopener">Bandalags háskólamanna (BHM)</a>.
+            BHM eru heildarsamtök 27 stéttarfélaga háskólamenntaðs fólks á Íslandi og
+            gæta hagsmuna rúmlega 30.000 félagsmanna. Í gegnum BHM taka félagsmenn FAST
+            þátt í kjarasamningsgerð og njóta margvíslegra réttinda og hlunninda.
+          </p>
+
+          <h2>Félagsaðild</h2>
+          <p>
+            Allir akademískir starfsmenn við Háskólann í Reykjavík eiga rétt á aðild
+            að FAST. Félagsgjöld eru innheimt samkvæmt gildandi kjarasamningi og renna
+            til reksturs félagsins og hagsmunagæslu.
+          </p>
+          <p>
+            Nánari upplýsingar um félagsaðild má fá með því að hafa samband við
+            félagið eða í gegnum BHM.
+          </p>
+        </div>
+
+        <aside class="sidebar">
+          <div class="info-box">
+            <h3>Lykilupplýsingar</h3>
+            <dl>
+              <dt>Heiti</dt>
+              <dd>FAST — Félag akademískra starfsmanna við HR</dd>
+              <dt>Tegund</dt>
+              <dd>Stéttarfélag</dd>
+              <dt>Yfirfélag</dt>
+              <dd><a href="https://www.bhm.is" target="_blank" rel="noopener">BHM</a></dd>
+              <dt>Háskóli</dt>
+              <dd><a href="https://www.ru.is" target="_blank" rel="noopener">Háskólinn í Reykjavík</a></dd>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .sidebar {
+    order: -1;
+  }
+
+  .info-box {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .info-box h3 {
+    font-size: var(--size-lg);
+    margin-bottom: var(--space-6);
+    color: var(--color-primary);
+  }
+
+  .info-box dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--size-sm);
+  }
+
+  .info-box dt {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .info-box dd {
+    color: var(--color-text-light);
+  }
+
+  .info-box a {
+    color: var(--color-primary-light);
+  }
+
+  @media (min-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr 300px;
+    }
+
+    .sidebar {
+      order: 1;
+    }
+  }
+</style>

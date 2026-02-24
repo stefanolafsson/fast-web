@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Hafa samband" description="Hafðu samband við FAST — Félag akademískra starfsmanna við HR.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Hafa samband</h1>
+      <p>Sendu okkur línu eða komdu við á skrifstofu Háskólans í Reykjavík.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Samskiptaupplýsingar</h2>
+
+          <div class="contact-cards">
+            <div class="contact-card">
+              <div class="contact-icon">&#9993;</div>
+              <div>
+                <h3>Netfang</h3>
+                <a href="mailto:fast@ru.is">fast@ru.is</a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">&#9962;</div>
+              <div>
+                <h3>Heimilisfang</h3>
+                <p>Háskólinn í Reykjavík<br />Menntavegur 1<br />102 Reykjavík</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">&#9201;</div>
+              <div>
+                <h3>Opnunartími skrifstofu</h3>
+                <p>Mánudaga til föstudaga<br />09:00 — 16:00</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bhm-note">
+            <h3>BHM ráðgjöf</h3>
+            <p>
+              Félagsmenn FAST geta einnig leitað til
+              <a href="https://www.bhm.is" target="_blank" rel="noopener">BHM</a>
+              með fyrirspurnir varðandi kjaramál, lögfræðiráðgjöf og önnur
+              réttindamál. BHM veitir félagsfólki aðildarfélaga sinna alhliða
+              ráðgjöf.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <h2>Senda skilaboð</h2>
+          <form class="contact-form" action="mailto:fast@ru.is" method="get" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Nafn</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Netfang</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Efni</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="body">Skilaboð</label>
+              <textarea id="body" name="body" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Senda skilaboð</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .contact-info h2,
+  .contact-form-section h2 {
+    font-size: var(--size-2xl);
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .contact-icon {
+    font-size: var(--size-2xl);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-card h3 {
+    font-size: var(--size-base);
+    color: var(--color-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-card p {
+    color: var(--color-text-light);
+    font-size: var(--size-sm);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  .contact-card a {
+    font-size: var(--size-sm);
+    color: var(--color-primary-light);
+  }
+
+  .bhm-note {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border-left: 4px solid var(--color-primary-light);
+  }
+
+  .bhm-note h3 {
+    font-size: var(--size-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .bhm-note p {
+    color: var(--color-text-light);
+    font-size: var(--size-sm);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-group label {
+    font-weight: 600;
+    font-size: var(--size-sm);
+    color: var(--color-text);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: var(--size-base);
+    color: var(--color-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: var(--color-bg);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-light);
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

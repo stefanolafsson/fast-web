@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const boardMembers = [
+  { name: 'Nafn formanns', role: 'Formaður', department: 'Deild' },
+  { name: 'Nafn varaformanns', role: 'Varaformaður', department: 'Deild' },
+  { name: 'Nafn ritara', role: 'Ritari', department: 'Deild' },
+  { name: 'Nafn gjaldkera', role: 'Gjaldkeri', department: 'Deild' },
+  { name: 'Nafn meðlims', role: 'Meðlimur', department: 'Deild' },
+];
+---
+
+<Layout title="Stjórn" description="Stjórn FAST — Félag akademískra starfsmanna við HR.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Stjórn félagsins</h1>
+      <p>Stjórn FAST er kosin á aðalfundi félagsins og gætir hagsmuna félagsmanna.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="prose">
+        <h2>Stjórnarmeðlimir</h2>
+        <p>
+          Stjórn FAST er skipuð fimm meðlimum sem kosnir eru á aðalfundi
+          félagsins til tveggja ára í senn. Stjórnin fundar reglulega og annast
+          daglegan rekstur félagsins.
+        </p>
+      </div>
+
+      <div class="board-grid">
+        {boardMembers.map((member) => (
+          <div class="board-card">
+            <div class="board-avatar">
+              <span>{member.name.charAt(0)}</span>
+            </div>
+            <div class="board-info">
+              <h3>{member.name}</h3>
+              <p class="board-role">{member.role}</p>
+              <p class="board-dept">{member.department}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-16);">
+        <h2>Hlutverk stjórnar</h2>
+        <p>Stjórn FAST hefur eftirfarandi hlutverk:</p>
+        <ul>
+          <li>Að fara með málefni félagsins milli aðalfunda.</li>
+          <li>Að gæta hagsmuna félagsmanna í kjaramálum.</li>
+          <li>Að vera í samskiptum við yfirstjórn HR um starfskjör og starfsumhverfi.</li>
+          <li>Að halda félagsmönnum upplýstum um kjaramál og önnur málefni sem varða þá.</li>
+          <li>Að boða til aðalfundar og annarra funda.</li>
+        </ul>
+
+        <h2>Aðalfundur</h2>
+        <p>
+          Aðalfundur félagsins er haldinn árlega, venjulega á vorönn. Á aðalfundi
+          er stjórn kosin, reikningar lagðir fram og stefna félagsins ráðin.
+          Allir félagsmenn eiga rétt til setu og atkvæða á aðalfundi.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .board-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  .board-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all 0.2s ease;
+  }
+
+  .board-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .board-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .board-avatar span {
+    font-size: var(--size-2xl);
+    font-weight: 700;
+    color: var(--color-text-inverse);
+  }
+
+  .board-info h3 {
+    font-size: var(--size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .board-role {
+    font-weight: 600;
+    color: var(--color-primary-light);
+    font-size: var(--size-sm);
+    margin-bottom: var(--space-1) !important;
+  }
+
+  .board-dept {
+    color: var(--color-text-light);
+    font-size: var(--size-sm);
+  }
+
+  @media (min-width: 640px) {
+    .board-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .board-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

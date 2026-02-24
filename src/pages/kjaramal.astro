@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kjaramál" description="Upplýsingar um kjarasamninga og réttindi félagsmanna FAST.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Kjaramál</h1>
+      <p>Upplýsingar um kjarasamninga, réttindi og starfskjör akademískra starfsmanna.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="prose">
+        <h2>Kjarasamningar</h2>
+        <p>
+          Kjaramál akademískra starfsmanna við HR falla undir kjarasamninga sem gerðir
+          eru á vegum BHM. Kjarasamningar ná m.a. til launa, vinnutíma, orlofs,
+          veikindaréttar og annarra starfskjara.
+        </p>
+        <p>
+          Gildandi kjarasamningar eru aðgengilegir á vef
+          <a href="https://www.bhm.is" target="_blank" rel="noopener">BHM</a>.
+        </p>
+      </div>
+
+      <div class="rights-grid">
+        <div class="card">
+          <h3 class="card-title">Laun og launaviðmið</h3>
+          <p class="card-text">
+            Laun akademískra starfsmanna miðast við launatöflur kjarasamninga.
+            Launaviðmið taka mið af starfi, menntun, starfsaldri og öðrum þáttum
+            samkvæmt samningum.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Orlof</h3>
+          <p class="card-text">
+            Félagsmenn eiga rétt á orlofi samkvæmt kjarasamningi og orlofslögum.
+            Nánari upplýsingar um orlofsréttindi og orlofshúsaaðgang í gegnum
+            BHM er hægt að nálgast á vef BHM.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Veikindaréttur</h3>
+          <p class="card-text">
+            Réttur til launa í veikindum er tryggður í kjarasamningi.
+            Lengd veikindaréttar fer eftir starfsaldri og ákvæðum gildandi
+            kjarasamnings.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Lífeyrissjóður</h3>
+          <p class="card-text">
+            Skyldubundið iðgjald er greitt í lífeyrissjóð samkvæmt lögum og
+            kjarasamningi. Félagsmenn eiga einnig rétt á mótframlagi vinnuveitanda
+            í séreignarsjóð.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Starfsþróun</h3>
+          <p class="card-text">
+            Félagsmenn eiga rétt á leyfi og/eða styrk til starfsþróunar, rannsókna
+            og endurmenntunar samkvæmt ákvæðum kjarasamnings og reglum háskólans.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Fæðingarorlof</h3>
+          <p class="card-text">
+            Réttur til fæðingarorlofs er samkvæmt lögum um fæðingar- og foreldraorlof.
+            Kjarasamningar geta veitt aukinn rétt umfram lög.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-16);">
+        <h2>Gagnlegir tenglar</h2>
+        <ul>
+          <li><a href="https://www.bhm.is" target="_blank" rel="noopener">BHM — Bandalag háskólamanna</a></li>
+          <li><a href="https://island.is" target="_blank" rel="noopener">Ísland.is — Opinber þjónustugátt</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  @media (min-width: 640px) {
+    .rights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rights-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
