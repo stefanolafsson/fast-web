@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const news = await getCollection('frettir');
+  return news.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const base = import.meta.env.BASE_URL;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('is-IS', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+---
+
+<Layout title={entry.data.title} description={entry.data.excerpt}>
+  <div class="page-header">
+    <div class="container">
+      <a href={`${base}frettir/`} class="back-link">&larr; Allar fréttir</a>
+      <h1>{entry.data.title}</h1>
+      <div class="article-meta">
+        <span class="tag">{entry.data.tag}</span>
+        <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <article class="prose">
+        <Content />
+      </article>
+      <div class="article-footer">
+        <a href={`${base}frettir/`} class="btn btn-outline">&larr; Til baka í fréttir</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--size-sm);
+    font-weight: 500;
+    margin-bottom: var(--space-6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-text-inverse);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .article-meta .tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .article-meta time {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--size-sm);
+  }
+
+  .article-footer {
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border-light);
+  }
+</style>
