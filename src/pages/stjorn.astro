@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 
 const boardMembers = [
-  { name: 'Nafn formanns', role: 'Formaður', department: 'Deild' },
-  { name: 'Nafn varaformanns', role: 'Varaformaður', department: 'Deild' },
-  { name: 'Nafn ritara', role: 'Ritari', department: 'Deild' },
-  { name: 'Nafn gjaldkera', role: 'Gjaldkeri', department: 'Deild' },
-  { name: 'Nafn meðlims', role: 'Meðlimur', department: 'Deild' },
+  { name: 'Freyr Halldórsson', role: 'Formaður', department: 'Viðskipta- og hagfræðideild', image: '/images/stjorn/freyr.png' },
+  { name: 'Jens Arnljótsson', role: 'Gjaldkeri', department: 'Tæknifræðideild', image: '/images/stjorn/jens.png' },
+  { name: 'Stefán Ólafsson', role: 'Stjórnarmeðlimur', department: 'Tölvunarfræðideild', image: '/images/stjorn/stefan.jpg' },
+  { name: 'Hanna Steinunn Steingrímsdóttir', role: 'Stjórnarmeðlimur', department: 'Sálfræðideild', image: '/images/stjorn/hanna.png' },
+  { name: 'Birna Valborgar Baldursdóttir', role: 'Stjórnarmeðlimur', department: 'Sálfræðideild', image: '/images/stjorn/birna.png' },
+  { name: 'Arnljótur Ástvaldsson', role: 'Stjórnarmeðlimur', department: 'Lagadeild', image: '/images/stjorn/arnljotur.png' },
 ];
 ---
 
@@ -33,7 +34,11 @@ const boardMembers = [
         {boardMembers.map((member) => (
           <div class="board-card">
             <div class="board-avatar">
-              <span>{member.name.charAt(0)}</span>
+              {member.image ? (
+                <img src={member.image} alt={member.name} width="64" height="64" loading="lazy" />
+              ) : (
+                <span>{member.name.charAt(0)}</span>
+              )}
             </div>
             <div class="board-info">
               <h3>{member.name}</h3>
@@ -99,6 +104,13 @@ const boardMembers = [
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+  }
+
+  .board-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   .board-avatar span {
