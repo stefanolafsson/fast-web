@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
 const base = import.meta.env.BASE_URL;
+
+const latestNews = (await getCollection('frettir'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
 ---
 
 <Layout title="Forsíða">
@@ -11,8 +17,8 @@ const base = import.meta.env.BASE_URL;
         <h1 class="hero-title">FAST</h1>
         <p class="hero-subtitle">Félag akademískra starfsmanna við Háskólann í Reykjavík</p>
         <p class="hero-desc">
-          Við stöndum vörð um réttindi og kjör akademískra starfsmanna og vinnum
-          að bættum starfsskilyrðum í háskólasamfélaginu.
+          Við stöndum vörð um réttindi og kjör akademískra starfsmanna HR og vinnum
+          að bættum kjörum og starfsumhverfi þeirra.
         </p>
         <div class="hero-actions">
           <a href={`${base}um-felagid/`} class="btn btn-primary">Um félagið</a>
@@ -26,15 +32,15 @@ const base = import.meta.env.BASE_URL;
     <div class="container">
       <h2 class="section-title">Hvað gerir FAST?</h2>
       <p class="section-subtitle">
-        Félagið gætir hagsmuna akademískra starfsmanna og vinnur að bættum kjörum og starfsumhverfi.
+        Félagið gætir hagsmuna akademískra starfsmanna Háskólans í Reykjavík og vinnur að bættum kjörum og starfsumhverfi þeirra.
       </p>
       <div class="grid-3">
         <div class="card">
           <div class="card-icon">&#9878;</div>
           <h3 class="card-title">Kjarasamningar</h3>
           <p class="card-text">
-            FAST vinnur með BHM að gerð kjarasamninga sem tryggja sanngjarnt
-            endurgjald og góð starfskjör fyrir akademískt starfsfólk.
+            FAST vinnur með BHM við gerð kjarasamninga sem tryggja sanngjörn
+            kjör og gott umhverfi fyrir akademískt starfsfólk HR.
           </p>
         </div>
         <div class="card">
@@ -49,8 +55,8 @@ const base = import.meta.env.BASE_URL;
           <div class="card-icon">&#9825;</div>
           <h3 class="card-title">Starfsumhverfi</h3>
           <p class="card-text">
-            Við leggjum áherslu á gott starfsumhverfi, jafnrétti og
-            vellíðan á vinnustað fyrir alla félagsmenn.
+            Við leggjum áherslu á gott starfsumhverfi, góð kjör,
+            jafnrétti og vellíðan á vinnustað fyrir alla félagsmenn.
           </p>
         </div>
       </div>
@@ -62,18 +68,16 @@ const base = import.meta.env.BASE_URL;
       <h2 class="section-title">Fréttir</h2>
       <p class="section-subtitle">Nýjustu fréttir og tilkynningar frá FAST.</p>
       <div class="grid-2">
-        <article class="news-card">
-          <span class="tag">Tilkynning</span>
-          <h3><a href={`${base}frettir/adalfundur-fast-2026/`}>Aðalfundur FAST 2026</a></h3>
-          <p>Aðalfundur félagsins verður haldinn í mars 2026. Nánari upplýsingar og dagskrá verða birtar hér á vefnum.</p>
-          <time>Febrúar 2026</time>
-        </article>
-        <article class="news-card">
-          <span class="tag">Kjaramál</span>
-          <h3><a href={`${base}frettir/kjarasamningar-stadan/`}>Kjarasamningar — nýjustu upplýsingar</a></h3>
-          <p>Upplýsingar um gildandi kjarasamninga og réttindi félagsmanna má finna á kjaramálasíðu félagsins.</p>
-          <time>Febrúar 2026</time>
-        </article>
+        {latestNews.map((item) => (
+          <article class="news-card">
+            <span class="tag">{item.data.tag}</span>
+            <h3><a href={`${base}frettir/${item.id}/`}>{item.data.title}</a></h3>
+            <p>{item.data.excerpt}</p>
+            <time datetime={item.data.date.toISOString()}>
+              {item.data.date.toLocaleDateString('is-IS', { month: 'long', year: 'numeric' })}
+            </time>
+          </article>
+        ))}
       </div>
       <div class="news-more">
         <a href={`${base}frettir/`} class="btn btn-outline">Allar fréttir</a>
