@@ -2,7 +2,7 @@
 title: "FAST website launched"
 date: 2026-02-24
 tag: "Announcement"
-excerpt: "The new FAST website is live. It provides information about the association, its board, pay and conditions, and news. The website will be updated regularly."
+excerpt: "The new FAST website is live. It provides information about the association, its board, terms and conditions, and news. The website will be updated regularly."
 ---
 
 The new website of the Association of Academic Staff (FAST) is live! The website is designed to be accessible and easy to use for all members.
@@ -13,7 +13,7 @@ The website includes, among other things:
 
 - **About** — Information about FAST, its role and history
 - **Board** — Information about the association's board and how to get in touch
-- **Pay & Rights** — An overview of collective agreements and members' rights
+- **Terms & Rights** — An overview of collective agreements and members' rights
 - **News** — The latest news and announcements from the association
 - **Contact** — Contact details and a contact form
 

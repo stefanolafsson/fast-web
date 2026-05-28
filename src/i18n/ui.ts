@@ -52,7 +52,7 @@ export const ui = {
     'nav.home': 'Home',
     'nav.about': 'About',
     'nav.board': 'Board',
-    'nav.pay': 'Pay & Rights',
+    'nav.pay': 'Terms & Rights',
     'nav.news': 'News',
     'nav.contact': 'Contact',
     'nav.menu': 'Main menu',

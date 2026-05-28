@@ -18,7 +18,7 @@ export const routes = {
     home: '',
     about: 'about',
     board: 'board',
-    pay: 'pay-and-rights',
+    pay: 'terms-and-rights',
     news: 'news',
     contact: 'contact',
   },
