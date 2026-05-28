@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="About" description="About FAST — the Association of Academic Staff at Reykjavík University." pageKey="about">
+  <div class="page-header">
+    <div class="container">
+      <h1>About FAST</h1>
+      <p>FAST is the trade union for academic staff at Reykjavík University and a member union of BHM.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="content-grid">
+        <div class="prose">
+          <h2>What is FAST?</h2>
+          <p>
+            FAST — the Association of Academic Staff at RU — is a trade union that
+            safeguards the interests of academic staff at Reykjavík University. The
+            association handles interest representation, collective bargaining and
+            works to improve its members' working conditions.
+          </p>
+          <p>
+            FAST's members are teachers, professors, associate professors, assistant
+            professors, adjuncts, researchers and other academic staff at RU. The
+            association also offers a dedicated PhD-student membership for doctoral
+            students at Reykjavík University.
+          </p>
+
+          <h2>Role and objectives</h2>
+          <p>FAST's main objectives are:</p>
+          <ul>
+            <li>To safeguard members' interests in pay and conditions and to secure fair terms.</li>
+            <li>To promote a better working environment and working conditions at RU.</li>
+            <li>To stand guard over academic freedom and job security.</li>
+            <li>To strengthen solidarity among academic staff.</li>
+            <li>To act as a liaison between members and the university's senior management.</li>
+          </ul>
+
+          <h2>Membership of BHM</h2>
+          <p>
+            FAST is a member union of <a href="https://www.bhm.is" target="_blank" rel="noopener">BHM — the Icelandic Confederation of University Graduates</a>.
+            BHM is an umbrella organisation of 27 trade unions of university-educated
+            people in Iceland, representing the interests of more than 30,000 members.
+            Through BHM, FAST members take part in collective bargaining and enjoy a
+            wide range of rights and benefits.
+          </p>
+
+          <h2>Membership</h2>
+          <p>
+            All academic staff at Reykjavík University are entitled to join FAST.
+            Membership fees are collected monthly and go towards running the
+            association and its advocacy work.
+          </p>
+          <p>
+            For more information about membership, please contact the association or
+            reach out through BHM.
+          </p>
+        </div>
+
+        <aside class="sidebar">
+          <div class="info-box">
+            <h3>Key information</h3>
+            <dl>
+              <dt>Name</dt>
+              <dd>FAST — Association of Academic Staff at RU</dd>
+              <dt>Type</dt>
+              <dd>Trade union</dd>
+              <dt>Parent organisation</dt>
+              <dd><a href="https://www.bhm.is" target="_blank" rel="noopener">BHM</a></dd>
+              <dt>University</dt>
+              <dd><a href="https://www.ru.is" target="_blank" rel="noopener">Reykjavík University</a></dd>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .sidebar {
+    order: -1;
+  }
+
+  .info-box {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .info-box h3 {
+    font-size: var(--size-lg);
+    margin-bottom: var(--space-6);
+    color: var(--color-primary);
+  }
+
+  .info-box dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-4);
+    font-size: var(--size-sm);
+  }
+
+  .info-box dt {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .info-box dd {
+    color: var(--color-text-light);
+  }
+
+  .info-box a {
+    color: var(--color-primary-light);
+  }
+
+  @media (min-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr 300px;
+    }
+
+    .sidebar {
+      order: 1;
+    }
+  }
+</style>

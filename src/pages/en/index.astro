@@ -1,32 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { newsLang, newsUrl, localizedPath, dateLocale } from '../i18n/utils';
-
-const base = import.meta.env.BASE_URL;
+import { newsLang, newsUrl, localizedPath, dateLocale } from '../../i18n/utils';
 
 const latestNews = (await getCollection('frettir'))
-  .filter((entry) => newsLang(entry.id) === 'is')
+  .filter((entry) => newsLang(entry.id) === 'en')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
-const newsHref = localizedPath('news', 'is');
+const aboutHref = localizedPath('about', 'en');
+const contactHref = localizedPath('contact', 'en');
+const newsHref = localizedPath('news', 'en');
 ---
 
-<Layout title="Forsíða" pageKey="home">
+<Layout title="Home" pageKey="home">
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-content">
-        <p class="hero-badge">Aðildarfélag BHM</p>
+        <p class="hero-badge">A member union of BHM</p>
         <h1 class="hero-title">FAST</h1>
-        <p class="hero-subtitle">Félag akademískra starfsmanna við Háskólann í Reykjavík</p>
+        <p class="hero-subtitle">Association of Academic Staff at Reykjavík University</p>
         <p class="hero-desc">
-          Við stöndum vörð um réttindi og kjör akademískra starfsmanna HR og vinnum
-          að bættum kjörum og starfsumhverfi þeirra.
+          We safeguard the rights and pay of academic staff at RU and work to
+          improve their terms and working environment.
         </p>
         <div class="hero-actions">
-          <a href={`${base}um-felagid/`} class="btn btn-primary">Um félagið</a>
-          <a href={`${base}hafa-samband/`} class="btn btn-secondary">Hafa samband</a>
+          <a href={aboutHref} class="btn btn-primary">About</a>
+          <a href={contactHref} class="btn btn-secondary">Contact</a>
         </div>
       </div>
     </div>
@@ -34,33 +34,33 @@ const newsHref = localizedPath('news', 'is');
 
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Hvað gerir FAST?</h2>
+      <h2 class="section-title">What does FAST do?</h2>
       <p class="section-subtitle">
-        Félagið gætir hagsmuna akademískra starfsmanna Háskólans í Reykjavík og vinnur að bættum kjörum og starfsumhverfi þeirra.
+        The association safeguards the interests of academic staff at Reykjavík University and works to improve their terms and working environment.
       </p>
       <div class="grid-3">
         <div class="card">
           <div class="card-icon">&#9878;</div>
-          <h3 class="card-title">Kjarasamningar</h3>
+          <h3 class="card-title">Collective agreements</h3>
           <p class="card-text">
-            FAST vinnur með BHM við gerð kjarasamninga sem tryggja sanngjörn
-            kjör og gott umhverfi fyrir akademískt starfsfólk HR.
+            FAST works with BHM to negotiate collective agreements that secure
+            fair terms and a good environment for academic staff at RU.
           </p>
         </div>
         <div class="card">
           <div class="card-icon">&#9733;</div>
-          <h3 class="card-title">Hagsmunagæsla</h3>
+          <h3 class="card-title">Advocacy</h3>
           <p class="card-text">
-            Félagið stendur vörð um réttindi félagsmanna gagnvart vinnuveitanda
-            og tryggir að farið sé eftir kjarasamningum og lögum.
+            The association protects members' rights in relation to the employer
+            and ensures that collective agreements and the law are followed.
           </p>
         </div>
         <div class="card">
           <div class="card-icon">&#9825;</div>
-          <h3 class="card-title">Starfsumhverfi</h3>
+          <h3 class="card-title">Working environment</h3>
           <p class="card-text">
-            Við leggjum áherslu á gott starfsumhverfi, góð kjör,
-            jafnrétti og vellíðan á vinnustað fyrir alla félagsmenn.
+            We place emphasis on a good working environment, good terms,
+            equality and wellbeing at work for all members.
           </p>
         </div>
       </div>
@@ -69,34 +69,34 @@ const newsHref = localizedPath('news', 'is');
 
   <section class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Fréttir</h2>
-      <p class="section-subtitle">Nýjustu fréttir og tilkynningar frá FAST.</p>
+      <h2 class="section-title">News</h2>
+      <p class="section-subtitle">The latest news and announcements from FAST.</p>
       <div class="grid-2">
         {latestNews.map((item) => (
           <article class="news-card">
             <span class="tag">{item.data.tag}</span>
-            <h3><a href={newsUrl(item.id, 'is')}>{item.data.title}</a></h3>
+            <h3><a href={newsUrl(item.id, 'en')}>{item.data.title}</a></h3>
             <p>{item.data.excerpt}</p>
             <time datetime={item.data.date.toISOString()}>
-              {item.data.date.toLocaleDateString(dateLocale.is, { month: 'long', year: 'numeric' })}
+              {item.data.date.toLocaleDateString(dateLocale.en, { month: 'long', year: 'numeric' })}
             </time>
           </article>
         ))}
       </div>
       <div class="news-more">
-        <a href={newsHref} class="btn btn-outline">Allar fréttir</a>
+        <a href={newsHref} class="btn btn-outline">All news</a>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container cta-box">
-      <h2>Aðildarfélag BHM</h2>
+      <h2>A member union of BHM</h2>
       <p>
-        FAST er aðildarfélag <a href="https://www.bhm.is" target="_blank" rel="noopener">Bandalags háskólamanna (BHM)</a>
-        sem er heildarsamtök 27 stéttarfélaga háskólamenntaðs fólks á Íslandi.
+        FAST is a member union of <a href="https://www.bhm.is" target="_blank" rel="noopener">BHM — the Confederation of University Graduates</a>,
+        an umbrella organisation of 27 trade unions of university-educated people in Iceland.
       </p>
-      <a href="https://www.bhm.is" target="_blank" rel="noopener" class="btn btn-outline">Skoða BHM</a>
+      <a href="https://www.bhm.is" target="_blank" rel="noopener" class="btn btn-outline">Visit BHM</a>
     </div>
   </section>
 </Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Pay & Rights" description="Information about collective agreements and the rights of FAST members." pageKey="pay">
+  <div class="page-header">
+    <div class="container">
+      <h1>Pay &amp; Rights</h1>
+      <p>Information about collective agreements, rights and the terms of employment of academic staff.</p>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="prose">
+        <h2>Collective agreements</h2>
+        <p>
+          FAST does not yet have a collective agreement in force with RU. The board is currently working to secure a collective agreement for members. Read more in this <a href={`${base}en/news/kjarasamningar-stadan`}>news item</a>.
+        </p>
+        <p>
+          The pay and conditions of academic staff at RU will fall under the agreement being negotiated in cooperation with BHM. Collective agreements cover, among other things, pay, working hours, holiday entitlement, sick-pay rights and other terms of employment.
+        </p>
+      </div>
+
+      <div class="rights-grid">
+        <div class="card">
+          <h3 class="card-title">Pay and pay scales</h3>
+          <p class="card-text">
+            The pay of academic staff is based on the salary tables in collective
+            agreements. Pay levels take account of the role, education, length of
+            service and other factors as set out in the agreements.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Annual leave</h3>
+          <p class="card-text">
+            Members are entitled to annual leave under the <a href="https://www.althingi.is/lagas/nuna/1987030.html">Holiday Allowance Act</a>.
+            Further information about holiday entitlements and access to holiday
+            cottages through BHM is available on the <a href="https://orlof.bhm.is/">BHM holiday website</a>.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Sick-leave rights</h3>
+          <p class="card-text">
+            The right to pay during illness is guaranteed by law. The length of
+            sick-leave entitlement depends on length of service and the terms of the
+            applicable employment contract.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Pension fund</h3>
+          <p class="card-text">
+            A mandatory contribution is paid into a pension fund as required by law.
+            Members are also entitled to an employer's matching contribution to a
+            private (supplementary) pension fund.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Professional development</h3>
+          <p class="card-text">
+            Members are entitled to leave and/or a grant for professional development,
+            research and continuing education in accordance with the university's rules.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Parental leave</h3>
+          <p class="card-text">
+            The right to parental leave is governed by the Act on Maternity/Paternity
+            and Parental Leave. Collective agreements may grant rights beyond the
+            statutory minimum.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-16);">
+        <h2>Useful links</h2>
+        <ul>
+          <li><a href="https://www.bhm.is" target="_blank" rel="noopener">BHM — Confederation of University Graduates</a></li>
+          <li><a href="https://island.is" target="_blank" rel="noopener">Ísland.is — Official services portal</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  @media (min-width: 640px) {
+    .rights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rights-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

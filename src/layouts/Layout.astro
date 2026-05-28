@@ -1,34 +1,57 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations, localizedPath, otherLang } from '../i18n/utils';
+import type { Lang, RouteKey } from '../i18n/utils';
 
 interface Props {
   title: string;
   description?: string;
+  lang?: Lang;
+  pageKey?: RouteKey;
+  /** Explicit href for the "other language" link (overrides the route map). */
+  altUrl?: string;
 }
 
-const { title, description = 'Félag akademískra starfsmanna við Háskólann í Reykjavík' } = Astro.props;
+const { title, description, lang: langProp, pageKey, altUrl: altUrlProp } = Astro.props;
+
+const lang = langProp ?? getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const metaDescription = description ?? t('site.tagline');
+const other = otherLang(lang);
+const altUrl =
+  altUrlProp ?? localizedPath(pageKey ?? 'home', other);
 const base = import.meta.env.BASE_URL;
+
+// Absolute URLs for hreflang alternates: this page + its other-language twin.
+const selfUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const altAbsUrl = Astro.site ? new URL(altUrl, Astro.site) : undefined;
 ---
 
 <!doctype html>
-<html lang="is">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    {selfUrl && altAbsUrl && (
+      <>
+        <link rel="alternate" hreflang={lang} href={selfUrl} />
+        <link rel="alternate" hreflang={other} href={altAbsUrl} />
+      </>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title} | FAST</title>
   </head>
   <body>
-    <Header />
+    <Header lang={lang} pageKey={pageKey} altUrl={altUrl} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
 

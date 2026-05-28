@@ -1,18 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
-import { newsLang, newsSlug, newsUrl, localizedPath, useTranslations, dateLocale } from '../../i18n/utils';
+import { newsLang, newsSlug, newsUrl, localizedPath, useTranslations, dateLocale } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
   const all = await getCollection('frettir');
-  const enSlugs = new Set(
-    all.filter((e) => newsLang(e.id) === 'en').map((e) => newsSlug(e.id))
+  const isSlugs = new Set(
+    all.filter((e) => newsLang(e.id) === 'is').map((e) => newsSlug(e.id))
   );
   return all
-    .filter((entry) => newsLang(entry.id) === 'is')
+    .filter((entry) => newsLang(entry.id) === 'en')
     .map((entry) => {
       const slug = newsSlug(entry.id);
-      const altUrl = enSlugs.has(slug) ? newsUrl(slug, 'en') : localizedPath('news', 'en');
+      const altUrl = isSlugs.has(slug) ? newsUrl(slug, 'is') : localizedPath('news', 'is');
       return {
         params: { slug },
         props: { entry, altUrl },
@@ -22,11 +22,11 @@ export async function getStaticPaths() {
 
 const { entry, altUrl } = Astro.props;
 const { Content } = await render(entry);
-const t = useTranslations('is');
-const newsHref = localizedPath('news', 'is');
+const t = useTranslations('en');
+const newsHref = localizedPath('news', 'en');
 
 function formatDate(date: Date): string {
-  return date.toLocaleDateString(dateLocale.is, {
+  return date.toLocaleDateString(dateLocale.en, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -34,7 +34,7 @@ function formatDate(date: Date): string {
 }
 ---
 
-<Layout title={entry.data.title} description={entry.data.excerpt} lang="is" pageKey="news" altUrl={altUrl}>
+<Layout title={entry.data.title} description={entry.data.excerpt} lang="en" pageKey="news" altUrl={altUrl}>
   <div class="page-header">
     <div class="container">
       <a href={newsHref} class="back-link">{t('news.back')}</a>

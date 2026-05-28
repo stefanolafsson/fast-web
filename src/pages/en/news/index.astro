@@ -1,14 +1,14 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { newsLang, newsUrl, dateLocale } from '../../i18n/utils';
+import { newsLang, newsUrl, dateLocale } from '../../../i18n/utils';
 
 const news = (await getCollection('frettir'))
-  .filter((entry) => newsLang(entry.id) === 'is')
+  .filter((entry) => newsLang(entry.id) === 'en')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 function formatDate(date: Date): string {
-  return date.toLocaleDateString(dateLocale.is, {
+  return date.toLocaleDateString(dateLocale.en, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -16,11 +16,11 @@ function formatDate(date: Date): string {
 }
 ---
 
-<Layout title="Fréttir" description="Fréttir og tilkynningar frá FAST." pageKey="news">
+<Layout title="News" description="News and announcements from FAST." pageKey="news">
   <div class="page-header">
     <div class="container">
-      <h1>Fréttir</h1>
-      <p>Nýjustu fréttir og tilkynningar frá Félagi akademískra starfsmanna.</p>
+      <h1>News</h1>
+      <p>The latest news and announcements from the Association of Academic Staff.</p>
     </div>
   </div>
 
@@ -28,7 +28,7 @@ function formatDate(date: Date): string {
     <div class="container">
       <div class="news-list">
         {news.map((item) => (
-          <a href={newsUrl(item.id, 'is')} class="news-link">
+          <a href={newsUrl(item.id, 'en')} class="news-link">
             <article class="news-item">
               <div class="news-meta">
                 <span class="tag">{item.data.tag}</span>
@@ -36,7 +36,7 @@ function formatDate(date: Date): string {
               </div>
               <h2>{item.data.title}</h2>
               <p>{item.data.excerpt}</p>
-              <span class="read-more">Lesa meira &rarr;</span>
+              <span class="read-more">Read more &rarr;</span>
             </article>
           </a>
         ))}

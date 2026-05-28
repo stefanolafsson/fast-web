@@ -1,6 +1,25 @@
 ---
-const base = import.meta.env.BASE_URL;
+import { useTranslations, localizedPath, getLangFromUrl } from '../i18n/utils';
+import { navOrder, type RouteKey } from '../i18n/routes';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = getLangFromUrl(Astro.url) } = Astro.props;
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
+
+const quickLinkKeys: RouteKey[] = navOrder.filter((key) => key !== 'home');
+const quickLabels: Record<RouteKey, string> = {
+  home: t('nav.home'),
+  about: t('nav.about'),
+  board: t('nav.board'),
+  pay: t('nav.pay'),
+  news: t('nav.news'),
+  contact: t('nav.contact'),
+};
 ---
 
 <footer class="site-footer">
@@ -8,40 +27,35 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <div class="footer-about">
         <div class="footer-logo">FAST</div>
-        <p class="footer-desc">
-          Félag akademískra starfsmanna við Háskólann í Reykjavík.
-          Aðildarfélag BHM — Bandalags háskólamanna.
-        </p>
+        <p class="footer-desc">{t('footer.about')}</p>
       </div>
 
       <div class="footer-links">
-        <h4>Flýtileiðir</h4>
+        <h4>{t('footer.quickLinks')}</h4>
         <ul>
-          <li><a href={`${base}um-felagid/`}>Um félagið</a></li>
-          <li><a href={`${base}stjorn/`}>Stjórn</a></li>
-          <li><a href={`${base}kjaramal/`}>Kjaramál</a></li>
-          <li><a href={`${base}frettir/`}>Fréttir</a></li>
-          <li><a href={`${base}hafa-samband/`}>Hafa samband</a></li>
+          {quickLinkKeys.map((key) => (
+            <li><a href={localizedPath(key, lang)}>{quickLabels[key]}</a></li>
+          ))}
         </ul>
       </div>
 
       <div class="footer-links">
-        <h4>Tenglar</h4>
+        <h4>{t('footer.links')}</h4>
         <ul>
-          <li><a href="https://www.bhm.is" target="_blank" rel="noopener">BHM — Bandalag háskólamanna</a></li>
-          <li><a href="https://www.ru.is" target="_blank" rel="noopener">Háskólinn í Reykjavík</a></li>
+          <li><a href="https://www.bhm.is" target="_blank" rel="noopener">{t('footer.bhm')}</a></li>
+          <li><a href="https://www.ru.is" target="_blank" rel="noopener">{t('footer.ru')}</a></li>
         </ul>
       </div>
 
       <div class="footer-contact">
-        <h4>Samband</h4>
-        <p>Háskólinn í Reykjavík<br />Menntavegur 1<br />102 Reykjavík</p>
+        <h4>{t('footer.contact')}</h4>
+        <p>{t('footer.ru')}<br />Menntavegur 1<br />102 Reykjavík</p>
         <p><a href="mailto:fast@bhm.is">fast@bhm.is</a></p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {year} FAST — Félag akademískra starfsmanna við HR. Allur réttur áskilinn.</p>
+      <p>&copy; {year} FAST — {t('header.logoText')}. {t('footer.rights')}</p>
     </div>
   </div>
 </footer>

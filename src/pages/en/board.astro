@@ -1,34 +1,34 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL;
 
 const boardMembers = [
-  { name: 'Freyr Halldórsson', role: 'Formaður', department: 'Viðskipta- og hagfræðideild', image: `${base}images/stjorn/freyr.png` },
-  { name: 'Jens Arnljótsson', role: 'Gjaldkeri', department: 'Tæknifræðideild', image: `${base}images/stjorn/jens.png` },
-  { name: 'Stefán Ólafsson', role: 'Stjórnarmeðlimur', department: 'Tölvunarfræðideild', image: `${base}images/stjorn/stefan.jpg` },
-  { name: 'Hanna Steinunn Steingrímsdóttir', role: 'Stjórnarmeðlimur', department: 'Sálfræðideild', image: `${base}images/stjorn/hanna.png` },
-  { name: 'Birna Valborgar Baldursdóttir', role: 'Stjórnarmeðlimur', department: 'Sálfræðideild', image: `${base}images/stjorn/birna.png` },
-  { name: 'Arnljótur Ástvaldsson', role: 'Stjórnarmeðlimur', department: 'Lagadeild', image: `${base}images/stjorn/arnljotur.png` },
+  { name: 'Freyr Halldórsson', role: 'Chair', department: 'Department of Business and Economics', image: `${base}images/stjorn/freyr.png` },
+  { name: 'Jens Arnljótsson', role: 'Treasurer', department: 'Department of Applied Engineering', image: `${base}images/stjorn/jens.png` },
+  { name: 'Stefán Ólafsson', role: 'Board member', department: 'Department of Computer Science', image: `${base}images/stjorn/stefan.jpg` },
+  { name: 'Hanna Steinunn Steingrímsdóttir', role: 'Board member', department: 'Department of Psychology', image: `${base}images/stjorn/hanna.png` },
+  { name: 'Birna Valborgar Baldursdóttir', role: 'Board member', department: 'Department of Psychology', image: `${base}images/stjorn/birna.png` },
+  { name: 'Arnljótur Ástvaldsson', role: 'Board member', department: 'Department of Law', image: `${base}images/stjorn/arnljotur.png` },
 ];
 ---
 
-<Layout title="Stjórn" description="Stjórn FAST — Félag akademískra starfsmanna við HR." pageKey="board">
+<Layout title="Board" description="The board of FAST — the Association of Academic Staff at RU." pageKey="board">
   <div class="page-header">
     <div class="container">
-      <h1>Stjórn félagsins</h1>
-      <p>Stjórn FAST er kosin á aðalfundi félagsins og gætir hagsmuna félagsmanna.</p>
+      <h1>The board</h1>
+      <p>The board of FAST is elected at the association's annual general meeting and safeguards members' interests.</p>
     </div>
   </div>
 
   <div class="page-content">
     <div class="container">
       <div class="prose">
-        <h2>Stjórnarmeðlimir</h2>
+        <h2>Board members</h2>
         <p>
-          Stjórn FAST er skipuð fimm meðlimum sem kosnir eru á aðalfundi
-          félagsins til tveggja ára í senn. Stjórnin fundar reglulega og annast
-          daglegan rekstur félagsins.
+          The board of FAST is elected at the association's annual general meeting
+          for two-year terms. The board meets regularly and handles the day-to-day
+          running of the association.
         </p>
       </div>
 
@@ -52,21 +52,22 @@ const boardMembers = [
       </div>
 
       <div class="prose" style="margin-top: var(--space-16);">
-        <h2>Hlutverk stjórnar</h2>
-        <p>Stjórn FAST hefur eftirfarandi hlutverk:</p>
+        <h2>The board's role</h2>
+        <p>The board of FAST has the following responsibilities:</p>
         <ul>
-          <li>Að fara með málefni félagsins milli aðalfunda.</li>
-          <li>Að gæta hagsmuna félagsmanna í kjaramálum.</li>
-          <li>Að vera í samskiptum við yfirstjórn HR um starfskjör og starfsumhverfi.</li>
-          <li>Að halda félagsmönnum upplýstum um kjaramál og önnur málefni sem varða þá.</li>
-          <li>Að boða til aðalfundar og annarra funda.</li>
+          <li>To manage the association's affairs between annual general meetings.</li>
+          <li>To safeguard members' interests in pay and conditions.</li>
+          <li>To liaise with RU's senior management on terms of employment and the working environment.</li>
+          <li>To keep members informed about pay matters and other issues that concern them.</li>
+          <li>To convene the annual general meeting and other meetings.</li>
         </ul>
 
-        <h2>Aðalfundur</h2>
+        <h2>Annual general meeting</h2>
         <p>
-          Aðalfundur félagsins er haldinn árlega, venjulega á vorönn. Á aðalfundi
-          er stjórn kosin, reikningar lagðir fram og stefna félagsins ráðin.
-          Allir félagsmenn eiga rétt til setu og atkvæða á aðalfundi.
+          The association's annual general meeting is held each year, usually in the
+          spring term. At the meeting the board is elected, the accounts are presented
+          and the association's policy is decided. All members have the right to attend
+          and vote at the annual general meeting.
         </p>
       </div>
     </div>

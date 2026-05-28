@@ -1,45 +1,63 @@
 ---
-const base = import.meta.env.BASE_URL;
-const currentPath = Astro.url.pathname;
+import { useTranslations, localizedPath, getLangFromUrl } from '../i18n/utils';
+import { navOrder, type RouteKey } from '../i18n/routes';
+import { langSwitchLabel } from '../i18n/ui';
+import type { Lang } from '../i18n/utils';
 
-const navLinks = [
-  { href: `${base}`, label: 'Forsíða' },
-  { href: `${base}um-felagid/`, label: 'Um félagið' },
-  { href: `${base}stjorn/`, label: 'Stjórn' },
-  { href: `${base}kjaramal/`, label: 'Kjaramál' },
-  { href: `${base}frettir/`, label: 'Fréttir' },
-  { href: `${base}hafa-samband/`, label: 'Hafa samband' },
-];
-
-function isActive(href: string): boolean {
-  if (href === base || href === `${base}/`) {
-    return currentPath === base || currentPath === `${base}/` || currentPath === base.slice(0, -1);
-  }
-  return currentPath.startsWith(href);
+interface Props {
+  lang?: Lang;
+  pageKey?: RouteKey;
+  altUrl?: string;
 }
+
+const { lang = getLangFromUrl(Astro.url), pageKey, altUrl } = Astro.props;
+const t = useTranslations(lang);
+
+const navLabels: Record<RouteKey, string> = {
+  home: t('nav.home'),
+  about: t('nav.about'),
+  board: t('nav.board'),
+  pay: t('nav.pay'),
+  news: t('nav.news'),
+  contact: t('nav.contact'),
+};
+
+const navLinks = navOrder.map((key) => ({
+  key,
+  href: localizedPath(key, lang),
+  label: navLabels[key],
+}));
+
+const homeHref = localizedPath('home', lang);
+const switchHref = altUrl ?? localizedPath('home', lang === 'is' ? 'en' : 'is');
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href={base} class="logo">
+    <a href={homeHref} class="logo">
       <span class="logo-mark">FAST</span>
-      <span class="logo-text">Félag akademískra starfsmanna við HR</span>
+      <span class="logo-text">{t('header.logoText')}</span>
     </a>
-    <button class="nav-toggle" aria-label="Opna valmynd" aria-expanded="false">
+    <button class="nav-toggle" aria-label={t('nav.openMenu')} aria-expanded="false">
       <span class="hamburger"></span>
     </button>
-    <nav class="nav" aria-label="Aðalvalmynd">
+    <nav class="nav" aria-label={t('nav.menu')}>
       <ul class="nav-list">
         {navLinks.map((link) => (
           <li>
             <a
               href={link.href}
-              class:list={['nav-link', { active: isActive(link.href) }]}
+              class:list={['nav-link', { active: pageKey === link.key }]}
             >
               {link.label}
             </a>
           </li>
         ))}
+        <li class="nav-lang-item">
+          <a href={switchHref} class="nav-lang" hreflang={lang === 'is' ? 'en' : 'is'} lang={lang === 'is' ? 'en' : 'is'}>
+            {langSwitchLabel[lang]}
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -153,6 +171,30 @@ function isActive(href: string): boolean {
     font-weight: 600;
   }
 
+  .nav-lang-item {
+    margin-left: var(--space-2);
+  }
+
+  .nav-lang {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    color: var(--color-primary);
+    font-size: var(--size-xs);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+  }
+
+  .nav-lang:hover {
+    color: var(--color-text-inverse);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
   .nav-toggle {
     display: flex;
     align-items: center;
@@ -240,6 +282,18 @@ function isActive(href: string): boolean {
       width: 100%;
       padding: var(--space-3) var(--space-4);
       font-size: var(--size-base);
+    }
+
+    .nav-lang-item {
+      margin-left: 0;
+      margin-top: var(--space-2);
+    }
+
+    .nav-lang {
+      width: 100%;
+      justify-content: center;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--size-sm);
     }
   }
 

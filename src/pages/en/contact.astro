@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Hafa samband" description="Hafðu samband við FAST — Félag akademískra starfsmanna við HR." pageKey="contact">
+<Layout title="Contact" description="Get in touch with FAST — the Association of Academic Staff at RU." pageKey="contact">
   <div class="page-header">
     <div class="container">
-      <h1>Hafa samband</h1>
-      <p>Sendu okkur línu.</p>
+      <h1>Contact</h1>
+      <p>Send us a line.</p>
     </div>
   </div>
 
@@ -14,13 +14,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
-          <h2>Samskiptaupplýsingar</h2>
+          <h2>Contact details</h2>
 
           <div class="contact-cards">
             <div class="contact-card">
               <div class="contact-icon">&#9993;</div>
               <div>
-                <h3>Netfang</h3>
+                <h3>Email</h3>
                 <a href="mailto:fast@bhm.is">fast@bhm.is</a>
               </div>
             </div>
@@ -28,44 +28,44 @@ import Layout from '../layouts/Layout.astro';
             <div class="contact-card">
               <div class="contact-icon">&#9962;</div>
               <div>
-                <h3>Heimilisfang</h3>
-                <p>Háskólinn í Reykjavík<br />Menntavegur 1<br />102 Reykjavík</p>
+                <h3>Address</h3>
+                <p>Reykjavík University<br />Menntavegur 1<br />102 Reykjavík</p>
               </div>
             </div>
           </div>
 
           <div class="bhm-note">
-            <h3>BHM ráðgjöf</h3>
+            <h3>BHM advisory services</h3>
             <p>
-              Félagsmenn FAST geta einnig leitað til
+              FAST members can also turn to
               <a href="https://www.bhm.is" target="_blank" rel="noopener">BHM</a>
-              með fyrirspurnir varðandi kjaramál, lögfræðiráðgjöf og önnur
-              réttindamál. BHM veitir félagsfólki aðildarfélaga sinna alhliða
-              ráðgjöf.
+              with questions about pay and conditions, legal advice and other matters
+              relating to their rights. BHM provides comprehensive advice to the
+              members of its affiliated unions.
             </p>
           </div>
         </div>
 
         <div class="contact-form-section">
-          <h2>Senda skilaboð</h2>
+          <h2>Send a message</h2>
           <form class="contact-form" action="mailto:fast@bhm.is" method="get" enctype="text/plain">
             <div class="form-group">
-              <label for="name">Nafn</label>
+              <label for="name">Name</label>
               <input type="text" id="name" name="name" required />
             </div>
             <div class="form-group">
-              <label for="email">Netfang</label>
+              <label for="email">Email</label>
               <input type="email" id="email" name="email" required />
             </div>
             <div class="form-group">
-              <label for="subject">Efni</label>
+              <label for="subject">Subject</label>
               <input type="text" id="subject" name="subject" required />
             </div>
             <div class="form-group">
-              <label for="body">Skilaboð</label>
+              <label for="body">Message</label>
               <textarea id="body" name="body" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Senda skilaboð</button>
+            <button type="submit" class="btn btn-primary">Send message</button>
           </form>
         </div>
       </div>
