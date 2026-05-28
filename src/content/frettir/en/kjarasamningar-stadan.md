@@ -18,6 +18,6 @@ Once the final version of the collective agreement is ready, it will be presente
 ## Where to turn
 
 - More information about the terms covered by BHM's collective bargaining can be found on the [BHM website](https://www.bhm.is)
-- Members can contact the [FAST board](mailto:fast@bhm.is) with questions about terms and conditions and the status of the negotiations
+- Members can contact the [FAST board](mailto:fast@bhm.is) with questions about terms and rights and the status of the negotiations
 
 Members will be kept informed of developments here on the website and by email.
