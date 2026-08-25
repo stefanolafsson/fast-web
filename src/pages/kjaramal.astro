@@ -1,18 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const funds = [
+  {
+    name: 'Sjúkrasjóður',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/sjukrasjodur',
+    desc: 'Styrkir vegna heilsu og forvarna, líkamsræktar, gleraugna og heyrnartækja, auk fæðingarstyrks, sjúkradagpeninga og útfararstyrks.',
+  },
+  {
+    name: 'Orlofssjóður',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/orlofssjodur',
+    desc: 'Orlofshús og íbúðir til leigu um land allt, ásamt gjafabréfum, gjafakortum og ýmsum afsláttum til félagsfólks.',
+  },
+  {
+    name: 'Starfsmenntunarsjóður',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/starfsmenntunarsjodur',
+    desc: 'Styrkir til endur- og símenntunar, svo sem vegna námskeiða, ráðstefna og námsferða sem tengjast starfi félagsfólks.',
+  },
+];
 ---
 
-<Layout title="Kjaramál" description="Upplýsingar um kjarasamninga og réttindi félagsmanna FAST." pageKey="pay">
+<Layout title="Réttindi og kjaramál" description="Sjóðir BHM, kjarasamningar og réttindi félagsmanna FAST." pageKey="pay">
   <div class="page-header">
     <div class="container">
-      <h1>Kjaramál</h1>
-      <p>Upplýsingar um kjarasamninga, réttindi og starfskjör akademískra starfsmanna.</p>
+      <h1>Réttindi og kjaramál</h1>
+      <p>Upplýsingar um sjóði BHM, kjarasamninga, réttindi og starfskjör akademískra starfsmanna.</p>
     </div>
   </div>
 
   <div class="page-content">
     <div class="container">
       <div class="prose">
+        <h2>Sjóðir BHM</h2>
+        <p>
+          Félagsfólk FAST á aðild að sjóðum BHM og getur sótt um styrki úr þeim.
+          Umsóknir og upplýsingar um réttindastöðu eru á
+          <a href="https://minarsidur.bhm.is" target="_blank" rel="noopener">Mínum síðum BHM</a>.
+        </p>
+      </div>
+
+      <div class="funds-grid">
+        {funds.map((fund) => (
+          <a class="fund-card" href={fund.url} target="_blank" rel="noopener">
+            <h3 class="card-title">{fund.name}</h3>
+            <p class="card-text">{fund.desc}</p>
+            <span class="fund-link">Nánar á vef BHM &rarr;</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-16);">
         <h2>Kjarasamningar</h2>
         <p>
           FAST hefur ekki enn gildandi kjarasamning við HR. Stjórn félagsins vinnur nú að því verkefni að tryggja félagsmönnum kjarasamning. Sjá nánar í <a href={`${import.meta.env.BASE_URL}frettir/kjarasamningar-stadan`}>frétt</a>.
@@ -82,21 +119,66 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .rights-grid {
+  .rights-grid,
+  .funds-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
     margin-top: var(--space-10);
   }
 
+  .funds-grid {
+    margin-top: var(--space-8);
+  }
+
+  .fund-card {
+    display: block;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .fund-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border);
+    transform: translateY(-2px);
+  }
+
+  .fund-card .card-title {
+    color: var(--color-primary);
+  }
+
+  .fund-card .card-text {
+    margin-bottom: 0;
+  }
+
+  .fund-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    color: var(--color-primary-light);
+    font-weight: 600;
+    font-size: var(--size-sm);
+  }
+
+  .fund-card:hover .fund-link {
+    color: var(--color-primary);
+  }
+
   @media (min-width: 640px) {
-    .rights-grid {
+    .rights-grid,
+    .funds-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (min-width: 1024px) {
-    .rights-grid {
+    .rights-grid,
+    .funds-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }

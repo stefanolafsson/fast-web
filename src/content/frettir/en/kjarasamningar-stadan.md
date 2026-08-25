@@ -1,7 +1,7 @@
 ---
 title: "Collective agreement — the state of play"
 date: 2026-02-24
-tag: "Terms & Rights"
+tag: "Rights & Terms"
 excerpt: "FAST does not yet have a collective agreement in force with Reykjavík University. The board is working to negotiate one in cooperation with BHM."
 ---
 

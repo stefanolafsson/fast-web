@@ -1,7 +1,7 @@
 ---
 title: 'FAST has requested talks on a collective agreement'
 date: 2026-08-25
-tag: 'Terms & Rights'
+tag: 'Rights & Terms'
 excerpt: 'The board of FAST has sent Reykjavík University a formal letter requesting a meeting to open negotiations on a collective agreement for members.'
 ---
 

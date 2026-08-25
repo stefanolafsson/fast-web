@@ -13,7 +13,7 @@ Nýr vefur Félags akademískra starfsmanna (FAST) er kominn í loftið! Vefurin
 
 - **Um félagið** — Upplýsingar um FAST, hlutverk þess og sögu
 - **Stjórn** — Upplýsingar um stjórn félagsins og hvernig hægt er að hafa samband
-- **Kjaramál** — Yfirlit yfir kjarasamninga og réttindi félagsmanna
+- **Réttindi og kjaramál** — Yfirlit yfir sjóði BHM, kjarasamninga og réttindi félagsmanna
 - **Fréttir** — Nýjustu fréttir og tilkynningar frá félaginu
 - **Hafa samband** — Samskiptaupplýsingar og samskiptaform
 

@@ -13,7 +13,7 @@ The website includes, among other things:
 
 - **About** — Information about FAST, its role and history
 - **Board** — Information about the association's board and how to get in touch
-- **Terms & Rights** — An overview of collective agreements and members' rights
+- **Rights & Terms** — An overview of BHM funds, collective agreements and members' rights
 - **News** — The latest news and announcements from the association
 - **Contact** — Contact details and a contact form
 

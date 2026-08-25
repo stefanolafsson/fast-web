@@ -2,19 +2,56 @@
 import Layout from '../../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL;
+
+const funds = [
+  {
+    name: 'Sjúkrasjóður — Sickness Fund',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/sjukrasjodur',
+    desc: 'Grants towards health and preventive care, fitness, glasses and hearing aids, as well as a childbirth grant, sickness benefits and a funeral grant.',
+  },
+  {
+    name: 'Orlofssjóður — Holiday Fund',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/orlofssjodur',
+    desc: 'Holiday cottages and apartments to rent across Iceland, along with gift certificates, gift cards and a range of member discounts.',
+  },
+  {
+    name: 'Starfsmenntunarsjóður — Professional Development Fund',
+    url: 'https://www.bhm.is/styrkir-og-sjodir/starfsmenntunarsjodur',
+    desc: 'Grants for continuing education and training, such as courses, conferences and study trips related to members’ work.',
+  },
+];
 ---
 
-<Layout title="Terms & Rights" description="Information about collective agreements and the rights of FAST members." pageKey="pay">
+<Layout title="Rights & Terms" description="BHM funds, collective agreements and the rights of FAST members." pageKey="pay">
   <div class="page-header">
     <div class="container">
-      <h1>Terms &amp; Rights</h1>
-      <p>Information about collective agreements, rights and the terms of employment of academic staff.</p>
+      <h1>Rights &amp; Terms</h1>
+      <p>Information about BHM funds, collective agreements, rights and the terms of employment of academic staff.</p>
     </div>
   </div>
 
   <div class="page-content">
     <div class="container">
       <div class="prose">
+        <h2>BHM funds</h2>
+        <p>
+          FAST members belong to BHM's funds and can apply for grants from them.
+          Applications and details of your entitlement status are available on
+          <a href="https://minarsidur.bhm.is" target="_blank" rel="noopener">Mínar síður</a>, the BHM member portal.
+        </p>
+      </div>
+
+      <div class="funds-grid">
+        {funds.map((fund) => (
+          <a class="fund-card" href={fund.url} target="_blank" rel="noopener">
+            <h3 class="card-title">{fund.name}</h3>
+            <p class="card-text">{fund.desc}</p>
+            <span class="fund-link">More on the BHM website &rarr;</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-16);">
         <h2>Collective agreements</h2>
         <p>
           FAST does not yet have a collective agreement in force with RU. The board is currently working to secure a collective agreement for members. Read more in this <a href={`${base}en/news/kjarasamningar-stadan`}>news item</a>.
@@ -86,21 +123,66 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <style>
-  .rights-grid {
+  .rights-grid,
+  .funds-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
     margin-top: var(--space-10);
   }
 
+  .funds-grid {
+    margin-top: var(--space-8);
+  }
+
+  .fund-card {
+    display: block;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .fund-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border);
+    transform: translateY(-2px);
+  }
+
+  .fund-card .card-title {
+    color: var(--color-primary);
+  }
+
+  .fund-card .card-text {
+    margin-bottom: 0;
+  }
+
+  .fund-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    color: var(--color-primary-light);
+    font-weight: 600;
+    font-size: var(--size-sm);
+  }
+
+  .fund-card:hover .fund-link {
+    color: var(--color-primary);
+  }
+
   @media (min-width: 640px) {
-    .rights-grid {
+    .rights-grid,
+    .funds-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (min-width: 1024px) {
-    .rights-grid {
+    .rights-grid,
+    .funds-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
